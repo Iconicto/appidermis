@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:appidermis/widgets/fab_with_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,6 +11,7 @@ import '../widgets/navigation_bar.dart';
 import 'dashboard.dart';
 import 'partner_clinics.dart';
 import 'result.dart';
+import 'package:toast/toast.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
@@ -25,24 +28,12 @@ class _MainPageState extends State<MainPage> {
 
   int _navSelectedIndex = 0;
 
-  // Future<void> _optionsDialogBox() {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => CameraPage()),
-  //   );
-  //   return null;
-  // }
-
   Future openCamera() async {
     var image = await ImagePicker.pickImage(
       source: ImageSource.camera,
     );
 
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ResultPage(image: image)),
-    );
+    handleImage(image);
   }
 
   Future openGallery() async {
@@ -50,22 +41,17 @@ class _MainPageState extends State<MainPage> {
       source: ImageSource.gallery,
     );
 
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ResultPage(image: image)),
-    );
+    handleImage(image);
   }
 
-  Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-    if (image == null) {
-    } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ResultPage(image: image)),
-      );
-    }
+  void handleImage(File image) {
+    image != null
+        ? Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ResultPage(image: image)),
+          )
+        : Toast.show("You didn't select an image!", context,
+            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
   }
 
   Widget _buildFab(BuildContext context) {

@@ -34,7 +34,7 @@ class SkinClinicCard extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
-        height: _scaler.getHeight(40), //4107,
+        height: _scaler.getHeight(50), //4107,
         width: _scaler.getWidth(43),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,7 +44,7 @@ class SkinClinicCard extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               child: Image.network(
                 image,
-                height: _scaler.getHeight(10),
+                height: _scaler.getHeight(8),
                 fit: BoxFit.contain,
               ),
             ),
