@@ -31,6 +31,8 @@ class _MainPageState extends State<MainPage> {
   Future openCamera() async {
     var image = await ImagePicker.pickImage(
       source: ImageSource.camera,
+      maxHeight: 299,
+      maxWidth: 299,
     );
 
     handleImage(image);

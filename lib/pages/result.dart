@@ -231,127 +231,31 @@ class _ResultPageState extends State<ResultPage> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(5),
-                            child: Card(
-                              child: Container(
-                                padding: EdgeInsets.all(5),
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image.network(
-                                        'https://i.imgur.com/k6Lv68r.png',
-                                        height: _scaler.getHeight(8),
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Container(
-                                          child: Text("Amaran Aesthetic",
-                                              style: TextStyle(
-                                                fontSize: _scaler.getWidth(4.5),
-                                              )),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "No5, Arunachalam Avenue, Horton Pl, 00700",
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () => _launchURL(
-                                              'https://goo.gl/maps/TT149QVoGE7fd1i68'),
-                                          child: Container(
-                                            padding: EdgeInsets.all(5.0),
-                                            alignment: Alignment.bottomCenter,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: <Widget>[
-                                                Text(
-                                                  "View",
-                                                  style: TextStyle(
-                                                    color: AppColors.AQUA,
-                                                    fontSize:
-                                                        _scaler.getTextSize(12),
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(5),
-                            child: Card(
-                              child: Container(
-                                padding: EdgeInsets.all(5),
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image.network(
-                                        'https://i.imgur.com/k6Lv68r.png',
-                                        height: _scaler.getHeight(8),
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Container(
-                                          child: Text("Amaran Aesthetic",
-                                              style: TextStyle(
-                                                fontSize: _scaler.getWidth(4.5),
-                                              )),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "No5, Arunachalam Avenue, Horton Pl, 00700",
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () => _launchURL(
-                                              'https://goo.gl/maps/TT149QVoGE7fd1i68'),
-                                          child: Container(
-                                            padding: EdgeInsets.all(5.0),
-                                            alignment: Alignment.bottomCenter,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: <Widget>[
-                                                Text(
-                                                  "View",
-                                                  style: TextStyle(
-                                                    color: AppColors.AQUA,
-                                                    fontSize:
-                                                        _scaler.getTextSize(12),
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
+                          Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  SkinClinicCard(
+                                    image: "https://i.imgur.com/k6Lv68r.png",
+                                    address:
+                                        "No5, Arunachalam Avenue, Horton Pl, 00700",
+                                    clinicName: "Amaran Aesthetic",
+                                    mapURL:
+                                        "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                                    rating: "10",
+                                  ),
+                                  SkinClinicCard(
+                                    image:
+                                        "http://www.lushsc.com/assets/images/home/lush_logo.png",
+                                    address: "27 Vijayakumaratunga Mw, Colombo",
+                                    clinicName: "LUSH Skin Clinic",
+                                    mapURL: "http://www.lushsc.com/",
+                                    rating: "5",
+                                  ),
+                                ],
+                              )
+                            ],
+
                           )
                           // Column(
                           //   children: <Widget>[
