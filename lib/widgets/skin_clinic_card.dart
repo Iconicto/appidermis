@@ -35,7 +35,6 @@ class SkinClinicCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         height: _scaler.getHeight(30), //4107,
-
         width: _scaler.getWidth(43),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
