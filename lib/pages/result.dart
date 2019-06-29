@@ -7,6 +7,7 @@ import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResultPage extends StatefulWidget {
   ResultPage({Key key, this.image}) : super(key: key);
@@ -52,6 +53,14 @@ class _ResultPageState extends State<ResultPage> {
     super.initState();
   }
 
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenScaler _scaler = ScreenScaler();
@@ -69,11 +78,49 @@ class _ResultPageState extends State<ResultPage> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Image.file(
-                widget.image,
-                height: _scaler.getHeight(30),
-                width: double.infinity,
-                fit: BoxFit.cover,
+              Stack(
+                children: <Widget>[
+                  Image.file(
+                    widget.image,
+                    height: _scaler.getHeight(30),
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  Opacity(
+                    opacity: 0.2,
+                    child: Container(
+                      color: Colors.black,
+                      height: _scaler.getHeight(30),
+                      width: _scaler.getWidth(100),
+                    ),
+                  ),
+                  Positioned(
+                    top: _scaler.getHeight(8),
+                    width: _scaler.getWidth(100),
+                    child: Icon(
+                      Icons.error,
+                      size: _scaler.getHeight(8),
+                      color: Colors.white,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 30.0,
+                    left: 25.0,
+                    right: 25.0,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "We found symptoms of Skin Cancer on you",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: _scaler.getTextSize(16),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               skinCancer == null
                   ? Container(
@@ -110,9 +157,9 @@ class _ResultPageState extends State<ResultPage> {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              skinCancer['name'],
+                              "What is it?",
                               style: TextStyle(
-                                fontSize: _scaler.getTextSize(18),
+                                fontSize: _scaler.getTextSize(15),
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.AQUA,
                               ),
@@ -208,7 +255,35 @@ class _ResultPageState extends State<ResultPage> {
                                 ],
                               )
                             ],
+
                           )
+                          // Column(
+                          //   children: <Widget>[
+                          //     Row(
+                          //       children: <Widget>[
+
+                          //         SkinClinicCard(
+                          //           image: "https://i.imgur.com/k6Lv68r.png",
+                          //           address:
+                          //               "No5, Arunachalam Avenue, Horton Pl, 00700",
+                          //           clinicName: "Amaran Aesthetic",
+                          //           mapURL:
+                          //               "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                          //           rating: "10",
+                          //         ),
+                          //         SkinClinicCard(
+                          //           image: "https://i.imgur.com/k6Lv68r.png",
+                          //           address:
+                          //               "No5, Arunachalam Avenue, Horton Pl, 00700",
+                          //           clinicName: "Amaran Aesthetic",
+                          //           mapURL:
+                          //               "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                          //           rating: "5",
+                          //         ),
+                          //       ],
+                          //     )
+                          //   ],
+                          // )
                         ],
                       ),
                     ),

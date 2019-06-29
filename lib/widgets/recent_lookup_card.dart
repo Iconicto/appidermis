@@ -1,8 +1,17 @@
 import 'package:appidermis/helpers/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RecentLookupCard extends StatelessWidget {
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,9 +31,8 @@ class RecentLookupCard extends StatelessWidget {
                         Icon(
                           Icons.add_alert,
                           color: AppColors.PINK,
-                          
                         ),
-                        SizedBox(width: ScreenScaler().getWidth(10)),
+                        SizedBox(width: ScreenScaler().getWidth(13)),
                         Text(
                           "Positive Results",
                           style: TextStyle(
@@ -49,7 +57,7 @@ class RecentLookupCard extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      "Skin Rash Detected",
+                      "Skin Cancer Detected",
                       style: TextStyle(
                         fontSize: ScreenScaler().getTextSize(12),
                       ),
@@ -61,12 +69,20 @@ class RecentLookupCard extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    SizedBox(height: ScreenScaler().getHeight(3),),
-                    Text(
-                      "Take me to the closest Skin Clinic",
-                      style: TextStyle(
-                        fontSize: ScreenScaler().getTextSize(13),
-                        color: AppColors.AQUA,
+                    SizedBox(
+                      height: ScreenScaler().getHeight(3),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _launchURL(
+                            'https://www.google.com/maps/place/Durdans+Hospital/@6.9020579,79.8513089,17z/data=!3m1!4b1!4m5!3m4!1s0x3ae2596094db18b9:0xb0ffe5ca94529291!8m2!3d6.9020526!4d79.8535029');
+                      },
+                      child: Text(
+                        "Take me to the closest Skin Clinic",
+                        style: TextStyle(
+                          fontSize: ScreenScaler().getTextSize(13),
+                          color: AppColors.AQUA,
+                        ),
                       ),
                     ),
                   ],
