@@ -66,7 +66,7 @@ class _PartnerClinicPageState extends State<PartnerClinicPage> {
                 ),
               )
             : Container(
-                height: _scaler.getHeight(51),
+                height: _scaler.getHeight(56),
                 child: GridView.count(
                   crossAxisCount: 2,
                   children: new List<Widget>.generate(

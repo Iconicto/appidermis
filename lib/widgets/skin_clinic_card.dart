@@ -34,17 +34,17 @@ class SkinClinicCard extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
-        height: _scaler.getHeight(40), //4107,
+        height: _scaler.getHeight(30), //4107,
         width: _scaler.getWidth(43),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(5.0),
               child: Image.network(
                 image,
-                height: _scaler.getHeight(10),
+                height: _scaler.getHeight(9),
                 fit: BoxFit.contain,
               ),
             ),
@@ -52,7 +52,7 @@ class SkinClinicCard extends StatelessWidget {
             Container(
               child: Text(clinicName,
                   style: TextStyle(
-                    fontSize: _scaler.getWidth(4.5),
+                    fontSize: _scaler.getTextSize(12),
                   )),
             ),
             // SizedBox(height: 10.0),
@@ -64,30 +64,28 @@ class SkinClinicCard extends StatelessWidget {
               ),
             ),
             // SizedBox(height: 10.0),
-            Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: GestureDetector(
-                onTap: () => _launchURL(mapURL),
-                child: Container(
-                  padding: EdgeInsets.all(5.0),
-                  alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Text(
-                        "View",
-                        style: TextStyle(
-                          color: AppColors.AQUA,
-                          fontSize: _scaler.getTextSize(12),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ],
-                  ),
+
+            GestureDetector(
+              onTap: () => _launchURL(mapURL),
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text(
+                      "View",
+                      style: TextStyle(
+                        color: AppColors.AQUA,
+                        fontSize: _scaler.getTextSize(12),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

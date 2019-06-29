@@ -5,17 +5,51 @@ import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class PreviousDiseaseCards extends StatelessWidget {
   final List<Map<String, dynamic>> diseasesInfo = [
-    {'name': "Melanocytic Nevi", 'isBookmarked': false, 'numberOfReports': 5},
-    {'name': "Melanoma", 'isBookmarked': false, 'numberOfReports': 2},
-    {'name': "Benign Lesions", 'isBookmarked': false, 'numberOfReports': 15},
+    {
+      'name': "Melanocytic Nevi",
+      'isBookmarked': false,
+      'numberOfReports': 5,
+      'info': 'https://en.wikipedia.org/wiki/Melanocytic_nevus'
+    },
+    {
+      'name': "Melanoma",
+      'isBookmarked': false,
+      'numberOfReports': 2,
+      'info': 'https://en.wikipedia.org/wiki/Melanoma'
+    },
+    {
+      'name': "Benign Lesions",
+      'isBookmarked': false,
+      'numberOfReports': 15,
+      'info': 'https://emedicine.medscape.com/article/1294801-overview'
+    },
     {
       'name': "Basal Cell Carcinoma",
       'isBookmarked': false,
-      'numberOfReports': 8
+      'numberOfReports': 8,
+      'info':
+          'https://www.mayoclinic.org/diseases-conditions/basal-cell-carcinoma/symptoms-causes/syc-20354187'
     },
-    {'name': "Actinic Keratoses", 'isBookmarked': false, 'numberOfReports': 4},
-    {'name': "Vascular Lesions", 'isBookmarked': false, 'numberOfReports': 7},
-    {'name': "Dermatofibroma", 'isBookmarked': false, 'numberOfReports': 20},
+    {
+      'name': "Actinic Keratoses",
+      'isBookmarked': false,
+      'numberOfReports': 4,
+      'info':
+          'https://www.skincancer.org/skin-cancer-information/actinic-keratosis'
+    },
+    {
+      'name': "Vascular Lesions",
+      'isBookmarked': false,
+      'numberOfReports': 7,
+      'info':
+          'https://www.msdmanuals.com/professional/dermatologic-disorders/benign-skin-tumors,-growths,-and-vascular-lesions/vascular-lesions-of-the-skin'
+    },
+    {
+      'name': "Dermatofibroma",
+      'isBookmarked': false,
+      'numberOfReports': 20,
+      'info': 'https://emedicine.medscape.com/article/1056742-overview'
+    },
   ];
 
   static ScreenScaler _scaler = ScreenScaler();

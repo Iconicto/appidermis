@@ -198,12 +198,11 @@ class _ResultPageState extends State<ResultPage> {
                                     rating: "10",
                                   ),
                                   SkinClinicCard(
-                                    image: "https://i.imgur.com/k6Lv68r.png",
-                                    address:
-                                        "No5, Arunachalam Avenue, Horton Pl, 00700",
-                                    clinicName: "Amaran Aesthetic",
-                                    mapURL:
-                                        "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                                    image:
+                                        "http://www.lushsc.com/assets/images/home/lush_logo.png",
+                                    address: "27 Vijayakumaratunga Mw, Colombo",
+                                    clinicName: "LUSH Skin Clinic",
+                                    mapURL: "http://www.lushsc.com/",
                                     rating: "5",
                                   ),
                                 ],
