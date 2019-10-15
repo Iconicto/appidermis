@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:appidermis/helpers/app_colors.dart';
 import 'package:appidermis/pages/main.dart';
 import 'package:appidermis/widgets/skin_clinic_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResultPage extends StatefulWidget {
@@ -110,10 +110,10 @@ class _ResultPageState extends State<ResultPage> {
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "We found symptoms of Skin Cancer on you",
+                        "We found symptoms of skin cancer on you",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: _scaler.getTextSize(16),
+                          fontSize: _scaler.getTextSize(15),
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -122,175 +122,186 @@ class _ResultPageState extends State<ResultPage> {
                   ),
                 ],
               ),
-              skinCancer == null
-                  ? Container(
-                      height: _scaler.getHeight(65),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            SizedBox(
-                              child: CircularProgressIndicator(
-                                strokeWidth: 4.0,
-                                backgroundColor: AppColors.PINK,
-                              ),
-                              height: _scaler.getHeight(8),
-                              width: _scaler.getWidth(17),
-                            ),
-                            SizedBox(height: _scaler.getHeight(2.5)),
-                            Text(
-                              "Loading",
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(15),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  : Container(
-                      padding: EdgeInsets.all(15.0),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "What is it?",
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(15),
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.AQUA,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              skinCancer['description'],
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(13.5),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Symptoms",
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(15),
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.AQUA,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              skinCancer['symptoms'],
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(13.5),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Remedies",
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(15),
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.AQUA,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              skinCancer['remedy'],
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(13.5),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Suggested Clinics",
-                              style: TextStyle(
-                                fontSize: _scaler.getTextSize(15),
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.AQUA,
-                              ),
-                            ),
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  SkinClinicCard(
-                                    image: "https://i.imgur.com/k6Lv68r.png",
-                                    address:
-                                        "No5, Arunachalam Avenue, Horton Pl, 00700",
-                                    clinicName: "Amaran Aesthetic",
-                                    mapURL:
-                                        "https://goo.gl/maps/TT149QVoGE7fd1i68",
-                                    rating: "10",
-                                  ),
-                                  SkinClinicCard(
-                                    image:
-                                        "http://www.lushsc.com/assets/images/home/lush_logo.png",
-                                    address: "27 Vijayakumaratunga Mw, Colombo",
-                                    clinicName: "LUSH Skin Clinic",
-                                    mapURL: "http://www.lushsc.com/",
-                                    rating: "5",
-                                  ),
-                                ],
-                              )
-                            ],
-
-                          )
-                          // Column(
-                          //   children: <Widget>[
-                          //     Row(
-                          //       children: <Widget>[
-
-                          //         SkinClinicCard(
-                          //           image: "https://i.imgur.com/k6Lv68r.png",
-                          //           address:
-                          //               "No5, Arunachalam Avenue, Horton Pl, 00700",
-                          //           clinicName: "Amaran Aesthetic",
-                          //           mapURL:
-                          //               "https://goo.gl/maps/TT149QVoGE7fd1i68",
-                          //           rating: "10",
-                          //         ),
-                          //         SkinClinicCard(
-                          //           image: "https://i.imgur.com/k6Lv68r.png",
-                          //           address:
-                          //               "No5, Arunachalam Avenue, Horton Pl, 00700",
-                          //           clinicName: "Amaran Aesthetic",
-                          //           mapURL:
-                          //               "https://goo.gl/maps/TT149QVoGE7fd1i68",
-                          //           rating: "5",
-                          //         ),
-                          //       ],
-                          //     )
-                          //   ],
-                          // )
-                        ],
-                      ),
-                    ),
+              Container(height: 200),
+              Center(
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "You should go and consult a skin clinic as soon as possible.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 22),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Container _buildCancerInfo(ScreenScaler _scaler) {
+    return skinCancer == null
+        ? Container(
+            height: _scaler.getHeight(65),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  SizedBox(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 4.0,
+                      backgroundColor: AppColors.PINK,
+                    ),
+                    height: _scaler.getHeight(8),
+                    width: _scaler.getWidth(17),
+                  ),
+                  SizedBox(height: _scaler.getHeight(2.5)),
+                  Text(
+                    "Loading",
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(15),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        : Container(
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "What is it?",
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(15),
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.AQUA,
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    skinCancer['description'],
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(13.5),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Symptoms",
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(15),
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.AQUA,
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    skinCancer['symptoms'],
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(13.5),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Remedies",
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(15),
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.AQUA,
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    skinCancer['remedy'],
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(13.5),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Suggested Clinics",
+                    style: TextStyle(
+                      fontSize: _scaler.getTextSize(15),
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.AQUA,
+                    ),
+                  ),
+                ),
+                Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        SkinClinicCard(
+                          image: "https://i.imgur.com/k6Lv68r.png",
+                          address: "No5, Arunachalam Avenue, Horton Pl, 00700",
+                          clinicName: "Amaran Aesthetic",
+                          mapURL: "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                          rating: "10",
+                        ),
+                        SkinClinicCard(
+                          image:
+                              "http://www.lushsc.com/assets/images/home/lush_logo.png",
+                          address: "27 Vijayakumaratunga Mw, Colombo",
+                          clinicName: "LUSH Skin Clinic",
+                          mapURL: "http://www.lushsc.com/",
+                          rating: "5",
+                        ),
+                      ],
+                    )
+                  ],
+                )
+                // Column(
+                //   children: <Widget>[
+                //     Row(
+                //       children: <Widget>[
+
+                //         SkinClinicCard(
+                //           image: "https://i.imgur.com/k6Lv68r.png",
+                //           address:
+                //               "No5, Arunachalam Avenue, Horton Pl, 00700",
+                //           clinicName: "Amaran Aesthetic",
+                //           mapURL:
+                //               "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                //           rating: "10",
+                //         ),
+                //         SkinClinicCard(
+                //           image: "https://i.imgur.com/k6Lv68r.png",
+                //           address:
+                //               "No5, Arunachalam Avenue, Horton Pl, 00700",
+                //           clinicName: "Amaran Aesthetic",
+                //           mapURL:
+                //               "https://goo.gl/maps/TT149QVoGE7fd1i68",
+                //           rating: "5",
+                //         ),
+                //       ],
+                //     )
+                //   ],
+                // )
+              ],
+            ),
+          );
   }
 }
